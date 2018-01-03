@@ -1,0 +1,8 @@
+<Tims
+    xsi:schemaLocation="http://tims.cisco.com/namespace http://tims.cisco.com/xsd/Tims.xsd"
+    xmlns="http://tims.cisco.com/namespace"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <Credential user="pyogaraj" token="00013864007B00001800000010010000"/>
+    <ID>Tst8586632r</ID>
+</Tims>
