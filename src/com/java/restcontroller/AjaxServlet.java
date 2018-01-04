@@ -8,18 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.java.backend.*;
+import com.java.backend.UpdateXml;;
 /**
- * Servlet implementation class TimsServlet
+ * Servlet implementation class AjaxServlet
  */
-@WebServlet("/TimsServlet")
-public class TimsServlet extends HttpServlet {
+@WebServlet("/AjaxServlet")
+public class AjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TimsServlet() {
+    public AjaxServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,18 +29,7 @@ public class TimsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("text/plain");
-		String cecid=request.getParameter("cec");
-		String testid = request.getParameter("tid");
-		String testtitle = request.getParameter("title");
-		String status = request.getParameter("status");
-		System.out.println("name is"+cecid);
-		System.out.println("tid is"+testid);
-		System.out.println("title is"+testtitle);
-		System.out.println("ststus is"+status);
-
 	}
 
 	/**
@@ -49,23 +38,30 @@ public class TimsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/plain");
-		ParseExcel ex = new ParseExcel();
+		UpdateXml xm = new UpdateXml();
+		PrintWriter out = response.getWriter();
 		
-		String btn1 = request.getParameter("Test Case Upload");
-		String btn2 = request.getParameter("Test Reuslt Upload");
-		String btn3 = request.getParameter("HOME");
-
+		String action  = request.getParameter("action");
+//		System.out.println("action is"+action);
+		if(action.equals("demo")){
+			System.out.println("inside action");
+			String cecid = request.getParameter("cec");
+			System.out.println("cec id is"+cecid);
+			String tid = request.getParameter("tid");
+			System.out.println("tid is"+tid);
+			try {
+				xm.fetchTitle(cecid, tid);
+				String title = xm.returnuserinputID(cecid, "Title");
 		
-		if(request.getParameter("Test Case Upload")!= null){
-			System.out.println("Test Case upload");
-			response.sendRedirect("TestcaseUpdate");
+				out.print(title);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 		}
-		else if(request.getParameter("Test Reuslt Upload")!= null){
-			System.out.println("Test Result Upload");
-			response.sendRedirect("ResultPage.jsp");
-		}
 		
-		
-
 	}
+
 }

@@ -30,21 +30,24 @@ public class UpdateXml {
 		UpdateXml xm = new UpdateXml();
 //		xm.reurnTestCaseFolderID();
 //		xm.updateTestcase();
-		xm.fetchTitle("pyogaraj","Tst8586632r");
+		xm.fetchTitle("pyogaraj","Tst8586366r");
 //		post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "C:/Users/pyogaraj/Desktop/parse_updated.xml","");
 //		xm.returnID("pyogaraj");
 			
 	}
 	
 	public static void fetchTitle(String cecid,String testid) throws Exception{
+		System.out.println("cec inside fetch is"+cecid);
+		System.out.println("testid inside fetch is"+testid);
+		System.out.println("inside fetchfile");
 		XMLPoster post = new XMLPoster();
-		String filePath2 = "fetchtitle.xml";
-		File xmlFile2 = new File(filePath2);
+//		String Path = "fetchtitle.xml";
+		File xmlFilefetch = new File("fetchtitle.xml");
 		 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	     DocumentBuilder dBuilder;
 	     try{
 	     dBuilder = dbFactory.newDocumentBuilder();	     
-	     Document doc2 = dBuilder.parse(xmlFile2);	     
+	     Document doc2 = dBuilder.parse(xmlFilefetch);	     
 	     doc2.getDocumentElement().normalize();
 	     changefetchid(doc2,testid);
 		 TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -182,7 +185,7 @@ public class UpdateXml {
 	}
 	
 	public static void startParser(String cecid){
-        String filePath = "C:/Users/"+cecid+"/Desktop/test1.xml";
+        String filePath = "test1.xml";
         
         
         File xmlFile = new File(filePath);
@@ -214,7 +217,7 @@ public class UpdateXml {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("C:/Users/"+cecid+"/Desktop/parse_updated.xml"));
+            StreamResult result = new StreamResult(new File("parse_updated.xml"));
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.transform(source, result);
             System.out.println("XML file updated successfully");

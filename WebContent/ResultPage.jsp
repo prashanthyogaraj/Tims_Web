@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,48 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-<link href='ResultPage.css' rel='stylesheet' >
+	<link href='ResultPage.css' rel='stylesheet'>
 
-<form>
-<div class="box">
-<h1 style="color:#3348A7">TIMS RESULT UPDATE</h1>
-
-<option class="option">OS Compat</option>
-<div class="panel">
-<table class="tab"  align="center">
-<tr> <td>Cisco ID:</td> <td><input type="text" ></td> </tr>
-<tr> <td>Test Case ID:</td> <td><input type="text"></td> </tr>
-<tr> <td>Test Case Title :</td> <td><input type="text" ></td> </tr>
-<tr> <td>Test Status:</td> <td><select>
-  <option value="pass">Pass</option>
-  <option value="fail">Failed</option>
-  <option value="block">Blocked</option>
-</select></td> </tr>
-<td><button type="Submit" value="Submit">Submit</button></td>
-</table>
-</div>
- <br> 
-<option class="option">VIC Regression</option>
-<div class="panel">
-<table class="tab"  align="center">
-<tr> <td>Cisco ID:</td> <td><input type="text" ></td> </tr>
-<tr> <td>Test Case ID:</td> <td><input type="text"></td> </tr>
-<tr> <td>Test Case Title:</td> <td><input type="text" ></td> </tr>
-<tr> <td>Test Status:</td> <td><select>
-  <option value="pass">Pass</option>
-  <option value="fail">Failed</option>
-  <option value="block">Blocked</option>
-</select> </td> </tr>
-<td><button type="Submit" value="Submit">Submit</button></td>
-</table>
-</div> 
-<br>
-
-</div> <!-- End Box -->
- 
-</form>
-
-<script>
+		<form method="GET" action="TimsServlet">
+			<div class="box">
+			<h1 style="color:#3348A7">TIMS RESULT UPDATE</h1>
+			<table class="tab"  align="center">
+			<tr> <td>Cisco ID:</td> <td><input type="text" id ="cec" name="cec" ></td> </tr>
+			<tr> <td>Test Case ID:</td> <td><input type="text" id ="tid" name="tid"></td> </tr>
+			<tr> <td>Test Case Title :</td> <td><input type="text" id = "test" name="title"></td><td><input type="button" id ="get" value = "Get Title"/></td> </tr>
+			<tr> <td>Test Status:</td> <td><select name="status">
+			  <option value="pass">passed</option>
+			  <option value="failed">failed</option>
+			  <option value="blocked">blocked</option>
+			  <option value="passx">Passed with Exception</option>
+			</select></td></tr>			
+			<tr><td><input type="Submit" value="Submit"></td>
+			</table>
+			</div>	  
+		</form>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
 var acc= document.getElementsByClassName("option");
 var i;
 for(i = 0; i < acc.length; i++) {
@@ -66,6 +45,30 @@ for(i = 0; i < acc.length; i++) {
     } 
   });
 }
+
+$(document).ready(function(){
+		$('#get').click(function(){
+			
+			var tid = $('#tid').val();
+			var cec = $('#cec').val();
+			$.ajax({
+				type : 'POST',
+				data : {
+					tid : tid,
+					cec :cec,
+					action : 'demo'
+				},
+				url :  'AjaxServlet',
+				success : function(result){
+					$('#test').val(result);
+				}
+				
+				
+			});
+		});
+		
+	});
+
 
 </script>
 </body>
