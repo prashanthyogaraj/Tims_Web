@@ -63,7 +63,7 @@ public class ParseExcel {
 		case 1:
 //			System.out.println("Hi i am upload result");
 			UpdateXml xm = new UpdateXml();
-			xm.startParser(cec);			
+			xm.startParser(cec,"","","");			
 			post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/update.svc", "parse_updated.xml",cec);
 			break;
 		case 2:

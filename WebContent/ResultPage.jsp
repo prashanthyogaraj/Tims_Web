@@ -17,8 +17,9 @@
 			<tr> <td>Test Case ID:</td> <td><input type="text" id ="tid" name="tid"></td> </tr>
 			<tr> <td>Test Case Title :</td> <td><input type="text" id = "test" name="title"></td><td><input type="button" id ="get" value = "Get Title"/></td> </tr>
 			<tr> <td>Test Status:</td> <td><select name="status">
-			  <option value="pass">passed</option>
+			  <option value="passed">passed</option>
 			  <option value="failed">failed</option>
+			  <option value="pending">pending</option>
 			  <option value="blocked">blocked</option>
 			  <option value="passx">Passed with Exception</option>
 			</select></td></tr>			

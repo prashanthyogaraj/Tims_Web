@@ -29,7 +29,7 @@ public class TimsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		UpdateXml xm = new UpdateXml();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/plain");
 		String cecid=request.getParameter("cec");
@@ -40,7 +40,17 @@ public class TimsServlet extends HttpServlet {
 		System.out.println("tid is"+testid);
 		System.out.println("title is"+testtitle);
 		System.out.println("ststus is"+status);
-
+		try {
+			 String output = xm.startParser(cecid, testid, testtitle, status);
+			 System.out.println("output is"+output);
+			 request.setAttribute("output", output);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		response.setContentType("text/xml");
+		request.getRequestDispatcher("/Response.jsp").forward(request, response);
+//		response.sendRedirect("ResultPage.jsp");
 	}
 
 	/**
@@ -58,7 +68,7 @@ public class TimsServlet extends HttpServlet {
 		
 		if(request.getParameter("Test Case Upload")!= null){
 			System.out.println("Test Case upload");
-			response.sendRedirect("TestcaseUpdate");
+			response.sendRedirect("TestcaseUpdate.jsp");
 		}
 		else if(request.getParameter("Test Reuslt Upload")!= null){
 			System.out.println("Test Result Upload");

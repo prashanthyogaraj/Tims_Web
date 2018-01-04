@@ -11,7 +11,7 @@
 
 		<form>
 		<div class="box">
-		<h1 style="color:#3348A7">TIMS RESULT UPDATE(3)</h1>
+		<h1 style="color:#3348A7">TIMS TESTCASE UPDATE</h1>
 
 			<option class="option">OS Compat</option>
 				<div class="panel">

@@ -65,7 +65,7 @@ public class XMLPoster
         filePost.releaseConnection();
         /* Hold response as a String in case we need to inspect it for debugging */
         String response = new String(os.toByteArray());
-		System.out.println("XMLPoster: "+response);
+//		System.out.println("XMLPoster: "+response);
         saveResponse(url, response,cec);
         if (responseCode != 200)
         {

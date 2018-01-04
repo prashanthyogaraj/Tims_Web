@@ -184,12 +184,10 @@ public class UpdateXml {
 	     
 	}
 	
-	public static void startParser(String cecid){
+	public static String startParser(String cecid,String testcaseid,String title,String status) throws Exception{
         String filePath = "test1.xml";
-        
-        
-        File xmlFile = new File(filePath);
-        
+        XMLPoster post = new XMLPoster();        
+        File xmlFile = new File(filePath);       
         
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
@@ -199,17 +197,17 @@ public class UpdateXml {
             
             doc.getDocumentElement().normalize();          
 //            
-            System.out.println("Enter the Test case id please");
+        /*    System.out.println("Enter the Test case id please");
             Scanner s = new Scanner(System.in);
             String id = s.nextLine();	
             System.out.println("Enter the status");
             String status = s.nextLine();
             System.out.println("Enter the title please");
-            String title = s.nextLine();
+            String title = s.nextLine(); */
            //update Id
-            updateId(doc,id);
+            updateId(doc,testcaseid);
             //update value            
-            updateValue(doc,id,status,title);
+            updateValue(doc,testcaseid,status,title);
             
            
             //write the updated document to file or console
@@ -225,7 +223,10 @@ public class UpdateXml {
         } catch (SAXException | ParserConfigurationException | IOException | TransformerException e1) {
             e1.printStackTrace();
         }
-    	
+       String response = post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/update.svc", "parse_updated.xml",cecid);
+	return response;
+       
+       
     }
 	
 	  public static void updateValue(Document doc,String timsid,String status,String title){
