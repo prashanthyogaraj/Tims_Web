@@ -78,7 +78,7 @@ public class ParseExcel {
 			System.out.println("tfid is"+tfid);
 			System.out.println("Enter the folder id to upload testcase for result");
 			String rfid = s.nextLine();
-			ex.vicRegressionExcel(tfid,rfid,cec);
+			ex.vicRegressionExcel("",tfid,rfid,cec);
 		
 			
 			
@@ -116,18 +116,19 @@ public class ParseExcel {
 			xm.createResFolder(folder_name,oscrfid,cec);
 			String resfolid = xm.returnID(cec);
 			System.out.println("resid is"+resfolid);
-			readExcel(servername,testcasefolderid,resfolid,sheet1,cec);
+			readExcel(servername,testcasefolderid,resfolid,sheet1,cec,filepath);
 //			readExcel(servername,testcasefolderid,resfolid);
 		}
 		wb.write(out);
 		out.close();
 //		System.out.println("Name of the sheet is"+sheetname);
 	}
-	public static void readExcel(String servername,String testcasefolderid,String resfolderid,XSSFSheet sheet1,String cec) throws Exception {
+	public static void readExcel(String servername,String testcasefolderid,String resfolderid,XSSFSheet sheet1,String cec,String filepath) throws Exception {
 //		String filename = "C:/Users/pyogaraj/Desktop/GPMR2_Plumas.xlsx";//
 		UpdateXml xm = new UpdateXml();
 		XMLPoster post = new XMLPoster();
-		String filename = "C:/Users/"+cec+"/Desktop/HBMR2.xlsx";
+//		String filename = "C:/Users/"+cec+"/Desktop/HBMR2.xlsx";
+		String filename = filepath;
 		ArrayList<String>resultid = new ArrayList<String>();
 		ArrayList<String>testcase = new ArrayList<String>();
 		
@@ -227,12 +228,13 @@ public class ParseExcel {
 
 	}
 	
-	public void vicRegressionExcel(String testreleasefolderid,String resultreleasefolderid,String cec) throws Exception{
+	public void vicRegressionExcel(String filepath,String testreleasefolderid,String resultreleasefolderid,String cec) throws Exception{
 		UpdateXml xm = new UpdateXml();
 		XMLPoster post = new XMLPoster();
 		
-		String filename = "C:/Users/"+cec+"/Desktop/vic.xlsx";
-		FileOutputStream out = new FileOutputStream("C:/Users/"+cec+"/Desktop/vic_updated.xls");
+//		String filename = "C:/Users/"+cec+"/Desktop/vic.xlsx";
+		String filename = filepath;
+		FileOutputStream out = new FileOutputStream("C:/Users/"+cec+"/Desktop/output_Timsid.xlsx");
 		
 		List<String> sheetname = new ArrayList<String>();
 		HashMap<Integer, List<String>> parse = new HashMap<Integer, List<String>>();
@@ -262,7 +264,7 @@ public class ParseExcel {
 			xm.createResFolder(folder_name,resultreleasefolderid,cec);
 			String resfolid = xm.returnID(cec);
 //			System.out.println("resid is"+resfolid);
-			readvicexcel(folder_name,testcasefolderid,resfolid,sheet1,cec);
+			readvicexcel(folder_name,testcasefolderid,resfolid,sheet1,cec,filepath);
 			
 		}
 		wb.write(out);
@@ -270,12 +272,13 @@ public class ParseExcel {
 		
 	}
 	
-	public void  readvicexcel(String servername,String tstfolderid,String resfolderid,XSSFSheet sheet1,String cec) throws Exception{
+	public void  readvicexcel(String servername,String tstfolderid,String resfolderid,XSSFSheet sheet1,String cec,String filepath) throws Exception{
 		UpdateXml xm = new UpdateXml();
 		int rowid;
 		XMLPoster post = new XMLPoster();
-		String filename = "C:/Users/"+cec+"/Desktop/vic.xlsx";
-		FileOutputStream out = new FileOutputStream("C:/Users/"+cec+"/Desktop/vic_updated.xls");
+//		String filename = "C:/Users/"+cec+"/Desktop/vic.xlsx";
+		String filename = filepath;
+		FileOutputStream out = new FileOutputStream("C:/Users/"+cec+"/Desktop/output_Timsid.xlsx");
 		
 		ArrayList<String>resultid = new ArrayList<String>();
 		ArrayList<String>testcase = new ArrayList<String>();
@@ -297,11 +300,10 @@ public class ParseExcel {
 //		comment = drawing.createCellComment(anchor);
 		
 		row = sheet.getRow(0);
-		System.out.println("check is" + row.getPhysicalNumberOfCells());
+//		System.out.println("check is" + row.getPhysicalNumberOfCells());
 		int numofcell = row.getPhysicalNumberOfCells();
 		System.out.println("sheetname is"+servername);
 		for (int i=1;i<=sheet.getLastRowNum();i++){
-			
 			String combination = "";
 			row = sheet.getRow(i);
 			for(int j=0;j<7;j++){
@@ -319,10 +321,10 @@ public class ParseExcel {
 		
 			System.out.println("combination is"+combination);		
 			xm.uploadTestcase(tstfolderid,combination,cec);
-			post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "C:/Users/"+cec+"/Desktop/parse_updated.xml",cec);
+			post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "parse_updated.xml",cec);
 			String testresid = xm.returnID(cec);
 			xm.uploadResult(resfolderid, combination, testresid,cec);
-			post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "C:/Users/"+cec+"/Desktop/parse_updated.xml",cec);
+			post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "parse_updated.xml",cec);
 			String finalresid = xm.returnID(cec);
 //			hparse.put(finalresid, combination);
 						
@@ -346,7 +348,7 @@ public class ParseExcel {
 			row = sheet1.createRow(rowid++);
 			int cellid = 0;
 			int cellid1 = 1;
-			System.out.println(resultid.get(i));
+//			System.out.println(resultid.get(i));
 			cell = row.createCell(cellid++);
 			cell.setCellValue(resultid.get(i));
 			cell1 = row.createCell(cellid1++);

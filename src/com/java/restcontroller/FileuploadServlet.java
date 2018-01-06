@@ -53,9 +53,7 @@ public class FileuploadServlet extends HttpServlet {
 		if (!file.exists()) {
 			file.mkdir();
 		}
-		
-
-		
+				
 		String path = "C:/uploads/";
 		String fname = null;
 		String filepath = null;
@@ -125,8 +123,17 @@ public class FileuploadServlet extends HttpServlet {
 			System.out.println("vicresultid is"+vicresultid);
 //			System.out.println("vicflder name is"+vicfoldername);
 			System.out.println("cec id"+viccecid);
+			try {
+				ex.vicRegressionExcel(filepath, victestid, vicresultid, viccecid);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
+		String result = "Test case Updated Successfully";
+		request.setAttribute("result", result);
+		request.getRequestDispatcher("/TestcaseUpdate.jsp").forward(request, response);
 	}
 
 }

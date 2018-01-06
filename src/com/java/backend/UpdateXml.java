@@ -89,7 +89,7 @@ public class UpdateXml {
 	}
 	public static void createResFolder(String foldername,String resfolder,String cecid) throws Exception{
 		XMLPoster post = new XMLPoster();
-		String filePath2 = "Desktop/testfolder.xml";
+		String filePath2 = "testfolder.xml";
 		File xmlFile2 = new File(filePath2);
 		 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	     DocumentBuilder dBuilder;
