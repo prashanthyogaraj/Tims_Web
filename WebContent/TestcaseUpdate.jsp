@@ -9,7 +9,7 @@
 <body>
 <link href='ResultPage.css' rel='stylesheet' >
 
-		<form>
+		<form method="POST" action="FileuploadServlet" enctype="multipart/form-data">
 		<div class="box">
 		<h1 style="color:#3348A7">TIMS TESTCASE UPDATE</h1>
 
@@ -17,7 +17,7 @@
 				<div class="panel">
 				<br>
 				<table class="tab"  align="center">
-				<tr> <td>File:</td>                <td><input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ></td> </tr>
+				<tr> <td>File:</td>                <td><input type="file" name = "file"  ></td> </tr>
 				<tr> <td>Test Case Folder ID:</td> <td><input type="text" ></td> </tr>
 				<tr> <td>Test Result ID :</td>     <td><input type="text" ></td> </tr>
 				<tr> <td><input type="submit" ></td></tr>
