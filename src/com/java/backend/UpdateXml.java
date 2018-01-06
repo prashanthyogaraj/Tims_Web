@@ -66,7 +66,7 @@ public class UpdateXml {
 	}
 	public static void createFolder(String foldername,String tstfolder,String cecid) throws Exception{
 		XMLPoster post = new XMLPoster();
-		String filePath2 = "C:/Users/"+cecid+"/Desktop/testfolder.xml";
+		String filePath2 = "testfolder.xml";
 		File xmlFile2 = new File(filePath2);
 		 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	     DocumentBuilder dBuilder;
@@ -78,18 +78,18 @@ public class UpdateXml {
 		 TransformerFactory transformerFactory = TransformerFactory.newInstance();
          Transformer transformer = transformerFactory.newTransformer();
          DOMSource source = new DOMSource(doc2);
-         StreamResult result = new StreamResult(new File("C:/Users/"+cecid+"/Desktop/parse_updated.xml"));
+         StreamResult result = new StreamResult(new File("parse_updated.xml"));
          transformer.setOutputProperty(OutputKeys.INDENT, "yes");
          transformer.transform(source, result);
          System.out.println("XML file parsed and updated successfully");
 	     }catch(SAXException | ParserConfigurationException | IOException | TransformerException e1){
 	    	 e1.printStackTrace();
 	     }
-	     post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "C:/Users/"+cecid+"/Desktop/parse_updated.xml",cecid);
+	     post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "parse_updated.xml",cecid);
 	}
 	public static void createResFolder(String foldername,String resfolder,String cecid) throws Exception{
 		XMLPoster post = new XMLPoster();
-		String filePath2 = "C:/Users/"+cecid+"/Desktop/testfolder.xml";
+		String filePath2 = "Desktop/testfolder.xml";
 		File xmlFile2 = new File(filePath2);
 		 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	     DocumentBuilder dBuilder;
@@ -101,17 +101,17 @@ public class UpdateXml {
 		 TransformerFactory transformerFactory = TransformerFactory.newInstance();
          Transformer transformer = transformerFactory.newTransformer();
          DOMSource source = new DOMSource(doc2);
-         StreamResult result = new StreamResult(new File("C:/Users/"+cecid+"/Desktop/parse_updated.xml"));
+         StreamResult result = new StreamResult(new File("parse_updated.xml"));
          transformer.setOutputProperty(OutputKeys.INDENT, "yes");
          transformer.transform(source, result);
          System.out.println("XML file parsed and updated successfully");
 	     }catch(SAXException | ParserConfigurationException | IOException | TransformerException e1){
 	    	 e1.printStackTrace();
 	     }
-	     post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "C:/Users/"+cecid+"/Desktop/parse_updated.xml",cecid);
+	     post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "parse_updated.xml",cecid);
 	}
 	public static void uploadTestcase(String folderID,String combination,String cecid){
-		String filePath2 = "C:/Users/"+cecid+"/Desktop/testcase.xml";
+		String filePath2 = "testcase.xml";
 		File xmlFile2 = new File(filePath2);
 		 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	     DocumentBuilder dBuilder;
@@ -123,7 +123,7 @@ public class UpdateXml {
 		 TransformerFactory transformerFactory = TransformerFactory.newInstance();
          Transformer transformer = transformerFactory.newTransformer();
          DOMSource source = new DOMSource(doc2);
-         StreamResult result = new StreamResult(new File("C:/Users/"+cecid+"/Desktop/parse_updated.xml"));
+         StreamResult result = new StreamResult(new File("parse_updated.xml"));
          transformer.setOutputProperty(OutputKeys.INDENT, "yes");
          transformer.transform(source, result);
          System.out.println("XML file parsed and updated successfully");
@@ -134,7 +134,7 @@ public class UpdateXml {
 	}
 	
 	public static void uploadResult(String folderID,String combination,String logicalid,String cecid){
-		String filePath2 = "C:/Users/"+cecid+"/Desktop/result.xml";
+		String filePath2 = "result.xml";
 		File xmlFile2 = new File(filePath2);
 		 DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	     DocumentBuilder dBuilder;
@@ -146,7 +146,7 @@ public class UpdateXml {
 		 TransformerFactory transformerFactory = TransformerFactory.newInstance();
          Transformer transformer = transformerFactory.newTransformer();
          DOMSource source = new DOMSource(doc2);
-         StreamResult result = new StreamResult(new File("C:/Users/"+cecid+"/Desktop/parse_updated.xml"));
+         StreamResult result = new StreamResult(new File("parse_updated.xml"));
          transformer.setOutputProperty(OutputKeys.INDENT, "yes");
          transformer.transform(source, result);
          System.out.println("XML file parsed and updated successfully");
@@ -157,7 +157,7 @@ public class UpdateXml {
 	}
 	
 	public static String returnID(String cecid){
-		String filePath1 = "C:/Users/"+cecid+"/Desktop/file1.xml";
+		String filePath1 = "file1.xml";
 		String foldid ="";
 		File xmlFile1 = new File(filePath1);
 		
@@ -290,6 +290,8 @@ public class UpdateXml {
 	    	for(int i=0;i<folderid.getLength();i++){
 	    		fol = (Element) folderid.item(i);
 	    		fol.setTextContent(folid);
+	    		fol.setAttribute("xlink:href", "");
+	    		fol.setAttribute("xlink:href", "http://tims.cisco.com:80/xml/"+folid+"/entity.svc"+fol.getAttribute("xlink:href"));
 	    		
 	    	}
 	    }
@@ -351,6 +353,8 @@ public class UpdateXml {
 		  Element folder= null;
 		  for(int j=0;j<fold_id.getLength();j++){
 			  folder = (Element)fold_id.item(j);
+			  folder.setAttribute("xlink:href", "");
+			  folder.setAttribute("xlink:href", "http://tims.cisco.com/xml/"+fid+"/entity.svc"+folder.getAttribute("xlink:href"));
 			  folder.setTextContent(fid);
 		  }
 	  }

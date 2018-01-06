@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Tims
+    xsi:schemaLocation="http://tims.cisco.com/namespace http://tims.cisco.com/xsd/Tims.xsd" 
+    xmlns="http://tims.cisco.com/namespace"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <Credential user="pyogaraj" token="00013864007B00001800000010010000"/>
+ <Folder>
+        <Title>Plumas1</Title>
+        <Owner>
+            <UserID>pyogaraj</UserID>
+        </Owner>
+        <WriteAccess>member</WriteAccess>
+       
+        <FolderID>Tst8422763f</FolderID>
+    </Folder>
+</Tims>

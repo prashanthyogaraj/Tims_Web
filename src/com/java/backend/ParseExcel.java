@@ -58,7 +58,7 @@ public class ParseExcel {
 			System.out.println("tfid is"+oscompattfid);
 			System.out.println("Enter the folder id to upload testcase for result");
 			String oscompatrfid = s.nextLine();
-			ex.getnumberofSheet(oscompattfid,oscompatrfid,cec);
+			ex.getnumberofSheet("",oscompattfid,oscompatrfid,cec);
 			break;
 		case 1:
 //			System.out.println("Hi i am upload result");
@@ -87,13 +87,13 @@ public class ParseExcel {
 	} 
 	}
 
-	public static void getnumberofSheet(String osctfid,String oscrfid,String cec) throws Exception{
+	public static void getnumberofSheet(String filepath,String osctfid,String oscrfid,String cec) throws Exception{
 		UpdateXml xm = new UpdateXml();
-		String filename = "C:/Users/"+cec+"/Desktop/HBMR2.xlsx";
-		FileOutputStream out = new FileOutputStream("C:/Users/"+cec+"/Desktop/HBMR2_updated.xls");
+//		String filename = "C:/Users/"+cec+"/Desktop/HBMR2.xlsx";
+		FileOutputStream out = new FileOutputStream("C:/Users/"+cec+"/Desktop/output_timsid.xlsx");
 		
 		List<String> sheetname = new ArrayList<String>();
-		FileInputStream file = new FileInputStream(new File(filename));
+		FileInputStream file = new FileInputStream(new File(filepath));
 		XSSFWorkbook wb = new XSSFWorkbook(file);
 		int sheetnum = wb.getNumberOfSheets();
 		XSSFSheet sheet1 = wb.createSheet();
@@ -178,10 +178,10 @@ public class ParseExcel {
 						
 						System.out.println("combination is"+combination);
 						xm.uploadTestcase(testcasefolderid,combination,cec);
-						post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "C:/Users/"+cec+"/Desktop/parse_updated.xml",cec);
+						post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "parse_updated.xml",cec);
 						String testresid = xm.returnID(cec);
 						xm.uploadResult(resfolderid, combination, testresid,cec);
-						post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "C:/Users/"+cec+"/Desktop/parse_updated.xml",cec);
+						post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "parse_updated.xml",cec);
 						String finalresid = xm.returnID(cec);
 //						System.exit(0);
 //					    hparse.put(finalresid, combination);

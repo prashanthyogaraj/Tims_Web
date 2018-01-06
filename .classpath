@@ -27,5 +27,8 @@
 	<classpathentry kind="lib" path="C:/Users/pyogaraj/Desktop/jars/standard.jar"/>
 	<classpathentry kind="lib" path="C:/Users/pyogaraj/Desktop/jars/org.apache.commons.fileupload.jar"/>
 	<classpathentry kind="lib" path="C:/Users/pyogaraj/Desktop/jars/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/pyogaraj/Desktop/jars/commons-collections.jar"/>
+	<classpathentry kind="lib" path="C:/Users/pyogaraj/Desktop/jars/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/pyogaraj/Desktop/jars/commons-collections4-4.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
