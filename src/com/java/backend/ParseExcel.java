@@ -142,7 +142,8 @@ public class ParseExcel {
 		
 		Row row = null;
 		Cell cell = null;
-		Comment comment = null;		
+		Comment comment = null;	
+		DataFormatter formatter = new DataFormatter();
 		row = sheet.getRow(0);
 		System.out.println("check is" + row.getPhysicalNumberOfCells());
 		int numofcell = row.getPhysicalNumberOfCells();
@@ -160,9 +161,12 @@ public class ParseExcel {
 					try {					
 						row = sheet.getRow(p);
 						cell = row.getCell(counter);
-						//cell = row.getCell(i)
-						// System.out.println(cell.getStringCellValue());						
-						excelval.add(cell.getStringCellValue());						
+						//cell = row.getCell(i);
+						
+//						String val = formatter.formatCellValue(sheet.getRow(p).getCell(counter));
+						
+						excelval.add(cell.getStringCellValue());
+//						excelval.add(val);						
 //						parse.put(counter, excelval);
 						
 						if((cell.getCellComment()==null)&&(counter!=0)){
@@ -188,12 +192,11 @@ public class ParseExcel {
 //					    hparse.put(finalresid, combination);
 						resultid.add(finalresid);
 						testcase.add(combination);
-						break;
+//						break;
 						
 						}
 						
 					} catch (NullPointerException e) {
-						
 						continue;
 					}
 				}
