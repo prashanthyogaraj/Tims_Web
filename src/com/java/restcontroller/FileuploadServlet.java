@@ -133,7 +133,7 @@ public class FileuploadServlet extends HttpServlet {
 		}
 		String result = "Test case Updated Successfully";
 		request.setAttribute("result", result);
-		request.getRequestDispatcher("/TestcaseUpdate.jsp").forward(request, response);
+		request.getRequestDispatcher("/Response.jsp").forward(request, response);
 	}
 
 }

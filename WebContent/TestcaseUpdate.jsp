@@ -14,7 +14,7 @@
 
 		<div class="box">
 		<h1 style="color:#3348A7">TIMS TESTCASE UPDATE</h1>
-			<h2>${ result}</h2>
+		
 			<option class="option" name="compat" >OS Compat</option>
 				<div class="panel">
 				<br>

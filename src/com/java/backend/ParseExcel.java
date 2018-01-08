@@ -202,7 +202,7 @@ public class ParseExcel {
 		}
 		
 		Cell cell1 = null;
-		row = sheet1.createRow(sheet1.getLastRowNum());
+		row = sheet1.createRow(sheet1.getLastRowNum()+1);
 		cell = row.createCell(0);
 		cell.setCellValue(servername);
 		
@@ -216,16 +216,8 @@ public class ParseExcel {
 			cell.setCellValue(resultid.get(i));
 			cell1 = row.createCell(cellid1++);
 			cell1.setCellValue(testcase.get(i));
-		}
-	
-//		for (Map.Entry entry : parse.entrySet()) {
-////			System.out.println(entry.getKey() + ", " + entry.getValue());
-//		}
-		
-//		for(Map.Entry ent : hparse.entrySet()){
-//			System.out.println("key is"+ent.getKey()+ " , val is"+ent.getValue());
-//		}
-
+			System.out.println(resultid.get(i)+" : "+testcase.get(i));
+		}	
 	}
 	
 	public void vicRegressionExcel(String filepath,String testreleasefolderid,String resultreleasefolderid,String cec) throws Exception{
@@ -278,7 +270,7 @@ public class ParseExcel {
 		XMLPoster post = new XMLPoster();
 //		String filename = "C:/Users/"+cec+"/Desktop/vic.xlsx";
 		String filename = filepath;
-		FileOutputStream out = new FileOutputStream("C:/Users/"+cec+"/Desktop/output_Timsid.xlsx");
+//		FileOutputStream out = new FileOutputStream("C:/Users/"+cec+"/Desktop/output_Timsid.xlsx");
 		
 		ArrayList<String>resultid = new ArrayList<String>();
 		ArrayList<String>testcase = new ArrayList<String>();
@@ -317,8 +309,7 @@ public class ParseExcel {
 				}
 				
 			}
-			
-		
+					
 			System.out.println("combination is"+combination);		
 			xm.uploadTestcase(tstfolderid,combination,cec);
 			post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "parse_updated.xml",cec);
@@ -338,7 +329,7 @@ public class ParseExcel {
 		}
 		
 		Cell cell1 = null;
-		row = sheet1.createRow(sheet1.getLastRowNum());
+		row = sheet1.createRow(sheet1.getLastRowNum()+1);
 		cell = row.createCell(0);
 		cell.setCellValue(servername);
 		
