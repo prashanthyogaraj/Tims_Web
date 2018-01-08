@@ -7,7 +7,6 @@
     <Credential user="pyogaraj" token="00013864007B00001800000010010000"/>
     <Case>
         <Title><![CDATA[_VIC 1487_CISCO 1.5 T_INT x710 DA4_INT x550__HGST SN200 6.4TB_SLES 12.2_LOCAL_CISCO 1.5 T + UEFI]]></Title>       
-        <Description><![CDATA[GPMR2]]></Description>
         <Owner>
             <UserID>pyogaraj</UserID>
         </Owner>
