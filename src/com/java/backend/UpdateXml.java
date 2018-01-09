@@ -184,7 +184,7 @@ public class UpdateXml {
 	     
 	}
 	
-	public static String startParser(String cecid,String testcaseid,String title,String status) throws Exception{
+	public static String startParser(String cecid,String testcaseid,String title,String status,String bugid) throws Exception{
         String filePath = "test1.xml";
         XMLPoster post = new XMLPoster();        
         File xmlFile = new File(filePath);       
@@ -207,7 +207,7 @@ public class UpdateXml {
            //update Id
             updateId(doc,testcaseid);
             //update value            
-            updateValue(doc,testcaseid,status,title);
+            updateValue(doc,testcaseid,status,title,bugid);
             
            
             //write the updated document to file or console
@@ -229,11 +229,12 @@ public class UpdateXml {
        
     }
 	
-	  public static void updateValue(Document doc,String timsid,String status,String title){
+	  public static void updateValue(Document doc,String timsid,String status,String title,String bugid){
 	    	NodeList tagid = doc.getElementsByTagName("ID");
 	    	NodeList logicalid = doc.getElementsByTagName("LogicalID");
 	    	NodeList tagstat = doc.getElementsByTagName("Status");
 	    	NodeList tagtitle = doc.getElementsByTagName("Title");
+	    	NodeList tagdescription = doc.getElementsByTagName("Description");
 	    	Element tag = null;
 	    	
 	    	for(int i=0;i<tagid.getLength();i++){
@@ -252,6 +253,10 @@ public class UpdateXml {
 	    	for(int k=0;k<tagtitle.getLength();k++){
 	    		tag = (Element) tagtitle.item(k);
 	    		tag.setTextContent(title);
+	    	}
+	    	for(int k=0;k<tagdescription.getLength();k++){
+	    		tag = (Element) tagdescription.item(k);
+	    		tag.setTextContent("Bugid:"+bugid+"\n"+"data");
 	    	}
 	    	
 	    }

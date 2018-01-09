@@ -36,12 +36,14 @@ public class TimsServlet extends HttpServlet {
 		String testid = request.getParameter("tid");
 		String testtitle = request.getParameter("title");
 		String status = request.getParameter("status");
+		String bugid = request.getParameter("bug");
 		System.out.println("name is"+cecid);
 		System.out.println("tid is"+testid);
 		System.out.println("title is"+testtitle);
 		System.out.println("ststus is"+status);
+		System.out.println("bug id is"+bugid);
 		try {
-			 String output = xm.startParser(cecid, testid, testtitle, status);
+			 String output = xm.startParser(cecid, testid, testtitle, status,bugid);
 			 System.out.println("output is"+output);
 			 request.setAttribute("output", output);
 		} catch (Exception e) {
