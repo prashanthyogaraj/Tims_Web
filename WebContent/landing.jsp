@@ -16,7 +16,7 @@
 			<!-- onclick="document.landing.submit();" -->
 			<input type='submit' value="Test Case Upload" name="Test Case Upload"
 				class="homebutton" /> <br> <br> <input type='submit'
-				value="Test Reuslt Upload" name="Test Reuslt Upload"
+				value="Test Result Upload" name="Test Reuslt Upload"
 				class="homebutton" /> <br>
 
 

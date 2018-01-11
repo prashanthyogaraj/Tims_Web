@@ -256,7 +256,7 @@ public class UpdateXml {
 	    	}
 	    	for(int k=0;k<tagdescription.getLength();k++){
 	    		tag = (Element) tagdescription.item(k);
-	    		tag.setTextContent("Bugid:"+bugid+"\n"+"data");
+	    		tag.setTextContent(bugid);
 	    	}
 	    	
 	    }

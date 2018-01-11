@@ -23,6 +23,7 @@
 			  <option value="blocked">blocked</option>
 			  <option value="passx">Passed with Exception</option>
 			</select> </td></tr>
+	<!--  	<tr><td><label id="remarks" >Remarks:</label></td><td><input type="text" id="remark" name="remark" ></td></tr>  --> 
 			<tr><td><label id="buglabel" hidden>Bug Id:</label></td><td><input type="text" id="bug" name="bug" hidden></td></tr> 			 					
 			<tr><td><input type="Submit" value="Submit"></td>
 			</table>
@@ -34,8 +35,8 @@
 function enableBugTextBox(){
 	var option =  document.getElementById("status").value;
 	var name =  document.getElementById("buglabel").innerHTML;
-	if(option=="failed"){
-		alert("inside if "+name);
+	if((option=="failed")||(option=="passx")){
+		//alert("inside if "+name);
 		// document.getElementById("bug").disabled=false;
 		 document.getElementById("buglabel").style.display="block";
 		 document.getElementById("bug").style.display="block";
