@@ -12,9 +12,6 @@
 		<Description></Description>
 		<Owner>
 			<UserID>pyogaraj</UserID>
-			<FirstName>prasanth</FirstName>
-			<LastName>yogaraj</LastName>
-			<Email>pyogaraj@cisco.com</Email>
 		</Owner>
 		<WriteAccess>member</WriteAccess>
 		<ProjectID xlink:href="http://tims.cisco.com/xml/Tst531p/project.svc">Tst531p</ProjectID>

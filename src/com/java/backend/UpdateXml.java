@@ -207,7 +207,7 @@ public class UpdateXml {
            //update Id
             updateId(doc,testcaseid);
             //update value            
-            updateValue(doc,testcaseid,status,title,bugid);
+            updateValue(doc,testcaseid,status,title,bugid,cecid);
             
            
             //write the updated document to file or console
@@ -229,12 +229,13 @@ public class UpdateXml {
        
     }
 	
-	  public static void updateValue(Document doc,String timsid,String status,String title,String bugid){
+	  public static void updateValue(Document doc,String timsid,String status,String title,String bugid,String ciscoid){
 	    	NodeList tagid = doc.getElementsByTagName("ID");
 	    	NodeList logicalid = doc.getElementsByTagName("LogicalID");
 	    	NodeList tagstat = doc.getElementsByTagName("Status");
 	    	NodeList tagtitle = doc.getElementsByTagName("Title");
 	    	NodeList tagdescription = doc.getElementsByTagName("Description");
+	    	NodeList userID = doc.getElementsByTagName("UserID");
 	    	Element tag = null;
 	    	
 	    	for(int i=0;i<tagid.getLength();i++){
@@ -258,7 +259,10 @@ public class UpdateXml {
 	    		tag = (Element) tagdescription.item(k);
 	    		tag.setTextContent(bugid);
 	    	}
-	    	
+	    	for(int k=0;k<userID.getLength();k++){
+	    		tag = (Element) userID.item(k);
+	    		tag.setTextContent(ciscoid);
+	    	}
 	    }
 	    public static void updateId(Document doc,String timsid){
 	    	NodeList tagid = doc.getElementsByTagName("ID");
