@@ -10,14 +10,16 @@
 	<link href='ResultPage.css' rel='stylesheet'>
 
 	<form name="landing" method="POST" action="TimsServlet">
-		<div class="box">
+		<div class="box1">
 			<h1 style="color:#3348A7">TIMS UPDATE</h1>
 			<br>
 			<!-- onclick="document.landing.submit();" -->
 			<input type='submit' value="Test Case Upload" name="Test Case Upload"
 				class="homebutton" /> <br> <br> <input type='submit'
 				value="Test Result Upload" name="Test Reuslt Upload"
-				class="homebutton" /> <br>
+				class="homebutton" /> <br> <br>
+					<input type='submit' value="Upload All result" name="Upload All Result"
+				class="homebutton" /> 
 
 
 

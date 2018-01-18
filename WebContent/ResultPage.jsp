@@ -21,6 +21,7 @@
 			  <option value="failed">failed</option>
 			  <option value="pending">pending</option>
 			  <option value="blocked">blocked</option>
+			  <option value="dropped">Dropped</option>
 			  <option value="passx">Passed with Exception</option>
 			</select> </td></tr>
 	<!--  	<tr><td><label id="remarks" >Remarks:</label></td><td><input type="text" id="remark" name="remark" ></td></tr>  --> 

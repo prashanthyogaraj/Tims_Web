@@ -77,6 +77,11 @@ public class TimsServlet extends HttpServlet {
 			response.sendRedirect("ResultPage.jsp");
 		}
 		
+		else if(request.getParameter("Upload All Result")!= null){
+			System.out.println("Upload All Result");
+			response.sendRedirect("uploadallresult.jsp");
+		}
+		
 		
 
 	}

@@ -38,12 +38,13 @@ public class ParseExcel {
 		XMLPoster post = new XMLPoster();
 		ParseExcel ex = new ParseExcel();
 		Scanner s = new Scanner(System.in);
-		System.out.println("Enter your CEC ID: ");
-		String cec = s.nextLine();
+		ex.uploadAllResult("","");
+//		System.out.println("Enter your CEC ID: ");
+//		String cec = s.nextLine();
 //		ex.getnumberofSheet();
 //		post.postXMLToUrl("http://tims.cisco.com/xml/Tst531p/entity.svc", "C:/Users/pyogaraj/Desktop/parse_updated.xml");
 //		ex.readExcel("Plumas 1", "", "");
-	while(true){
+/*	while(true){
 //		Scanner s = new Scanner(System.in);
 //		System.out.println("Enter the Test case you need to run \n 1.upload Test Case and result\n 2.Update Test status in TIMS\n 3.upload vic regression Testcase\n 4.Exit");
 		System.out.println("Enter the Test case you need to run \n 1.Update Test status in TIMS\n 2.Exit");
@@ -84,7 +85,7 @@ public class ParseExcel {
 			
 		}
 		
-	} 
+	}  */
 	}
 
 	public static void getnumberofSheet(String filepath,String osctfid,String oscrfid,String cec) throws Exception{
@@ -353,5 +354,66 @@ public class ParseExcel {
 //		out.close();
 
 	}
+	public void uploadAllResult(String filepath,String cecid) throws Exception{
+//		String filename = "C:/Users/pyogaraj/Desktop/output_timsid.xlsx";
+		String filename = filepath;
+		UpdateXml xm = new UpdateXml();
+		HashMap<String,String> resulthash = new HashMap<String,String>();
+		HashMap<String,String> titlehash =  new HashMap<String,String>();
+		HashMap<String,String> bugidhash =  new HashMap<String,String>();
+		FileInputStream file = new FileInputStream(new File(filename));
+		XSSFWorkbook wb = new XSSFWorkbook(file);
+		
+		Sheet sheet = wb.getSheet("Result ID");
+
+		System.out.println(sheet.getLastRowNum());
+		Row row = null;
+		Cell cell1 = null;
+		Cell cell2 = null;
+		Cell cell3 = null;
+		Cell cell4 = null;
+		try{
+		for(int i=0;i<=sheet.getLastRowNum();i++){
+			row = sheet.getRow(i);
+			cell1 = row.getCell(0);
+			cell2 = row.getCell(1);
+			cell3 = row.getCell(2);
+			cell4 = row.getCell(3);
+
+//			System.out.println("cell1 "+cell1.getStringCellValue() + " cell2 " + cell2.getStringCellValue() + " cell3 " + cell3.getStringCellValue());
+			titlehash.put(cell1.getStringCellValue(),cell2.getStringCellValue());
+			resulthash.put(cell1.getStringCellValue(),cell3.getStringCellValue());
+			if(cell4!=null){
+			bugidhash.put(cell1.getStringCellValue(), cell4.getStringCellValue());
+			}
+			
+		}
+		}catch(Exception e){
+			System.out.println("null");
+		}
+		
+		for(int j=0;j<=sheet.getLastRowNum();j++){
+			row = sheet.getRow(j);
+			Cell cell = row.getCell(0);
+			String testcaseid = cell.getStringCellValue();
+			String title = titlehash.get(cell.getStringCellValue());
+			String result = resulthash.get(cell.getStringCellValue());
+			String bugid = bugidhash.get(cell.getStringCellValue());
+//			System.out.println("Title of tht id "+cell.getStringCellValue() +" "+title);
+//			System.out.println("result of tht id "+cell.getStringCellValue() +" "+result);
+//			System.out.println("result of tht id "+cell.getStringCellValue() +" "+bugid);
+			if(bugid==null){
+			xm.startParser(cecid, testcaseid, title, result,"");
+			}
+			else{
+				System.out.println("Title of tht id "+cell.getStringCellValue() +" "+title);
+				System.out.println("result of tht id "+cell.getStringCellValue() +" "+result);
+				System.out.println("result of tht id "+cell.getStringCellValue() +" "+bugid);
+				xm.startParser(cecid, testcaseid, title, result,bugid);
+			}
+		}
+	
+	}
+		
 
 }
