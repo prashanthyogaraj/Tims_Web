@@ -95,6 +95,9 @@ public class uploadallresult extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String allresult = "Results Updated Successfully";
+		request.setAttribute("allresult", allresult);
+		request.getRequestDispatcher("/Response.jsp").forward(request, response);
 	}
 
 }

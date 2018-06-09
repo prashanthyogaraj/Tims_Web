@@ -4,11 +4,10 @@
 	xmlns="http://tims.cisco.com/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:xlink="http://www.w3.org/1999/xlink">
 	<Credential user="pyogaraj" token="00013864007B00001800000010010000" />
-	<Result xlink:href="http://tims.cisco.com/xml/Tst8313202r/entity.svc">
-		<Title>LSI9265CV-8i_VIC 1285_QLE2462_RHEL6.4_SAN Boot_Install OS and
-			Verify/Upgrade drivers on AL2_IVB</Title>
-		<ID xlink:href="http://tims.cisco.com/xml/Tst8313202r/entity.svc">Tst8313202r</ID>
-		<LogicalID> Tst8313202r</LogicalID>
+	<Result xlink:href="http://tims.cisco.com/xml/Tst11960310r/entity.svc">
+		<Title>3260-M4 V2_Intel IVY_vSphere 5.5 _Partial Cert_</Title>
+		<ID xlink:href="http://tims.cisco.com/xml/Tst11960310r/entity.svc">Tst11960310r</ID>
+		<LogicalID>Tst11960310r</LogicalID>
 		<Description></Description>
 		<Owner>
 			<UserID>pyogaraj</UserID>
@@ -16,6 +15,10 @@
 		<WriteAccess>member</WriteAccess>
 		<ProjectID xlink:href="http://tims.cisco.com/xml/Tst531p/project.svc">Tst531p</ProjectID>
 		<DatabaseID xlink:href="http://tims.cisco.com/xml/Nuova/database.svc">Nuova</DatabaseID>
+ 		 <TextFieldValue>
+            <FieldName>BIOS/CIMC Version</FieldName>
+            <Value></Value>
+        </TextFieldValue>
 		<Status>pending</Status>
 		
 	</Result>
